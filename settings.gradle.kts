@@ -1,0 +1,1 @@
+rootProject.name = "AutoTest_Teach_Java_1"

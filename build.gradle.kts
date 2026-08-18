@@ -1,3 +1,5 @@
+
+
 plugins {
     id("java")
 }
@@ -26,10 +28,24 @@ tasks.register<Test>("runAllTests") {
     finalizedBy("printTestEndMessage")
 }
 
+
+tasks.register<Test>("runAssertionTests") {
+    group = "custom"
+    description = "Запускает тесты с тегом 'task2'"
+
+    useJUnitPlatform {
+        // Используем прямое присваивание множества вместо .add()
+        includeTags = setOf("task2")
+    }
+
+    finalizedBy("printTestEndMessage")
+}
+
 tasks.register("printTestEndMessage") {
     group = "custom"
     description = "Завершение тестов"
     doLast {
         println("Test run is over")
     }
+
 }

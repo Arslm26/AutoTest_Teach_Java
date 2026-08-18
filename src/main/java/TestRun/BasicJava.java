@@ -6,11 +6,11 @@ import java.util.List;
 
 public class BasicJava {
 
-        public boolean isEven(int n) {
+        public static boolean isEven(int n) {
             return n % 2 == 0;
         }
 
-        public String checkAccess(int age) {
+        public static String checkAccess(int age) {
             if (age >= 18) {
                 return "Доступ разрешен";
             } else {

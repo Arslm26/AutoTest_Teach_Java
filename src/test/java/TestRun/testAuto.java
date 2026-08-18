@@ -19,10 +19,12 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class test {
+public class testAuto {
 
     private BasicJava basicJava;
     private Random random;
+    private List<String> inputList;
+
 
     @BeforeEach
     public void setUp() {
@@ -99,11 +101,8 @@ public class test {
     @Test
     public void testSumToN() {
         Random rand = new Random();
-        int n = rand.nextInt(50) + 1; // Случайное число от 1 до 50
-
+        int n = rand.nextInt(50) + 1;
         int result = BasicJava.sumToN(n);
-
-        // Вычисляем правильный результат по формуле, чтобы с чем-то сравнить
         int expected = n * (n + 1) / 2;
 
         if (result == expected) {
@@ -171,5 +170,60 @@ public class test {
             System.out.println("TEST FAILED");
         }
     }
+
+//===============================Task 3 (Assertions sub-task1)
+    @Test
+    public void testIsEven_ReturnsBoolean() {
+        int number = 4; // Четное число
+        boolean expectedResult = true;
+
+        boolean actualResult = BasicJava.isEven(number);
+
+        assertEquals(expectedResult, actualResult,
+            "Ожидалось, что число " + number + " четное, но метод вернул false");
 }
+
+    @Test
+    public void testRemoveSpecificName_ReturnsList() {
+    List<String> inputList = new ArrayList<>(Arrays.asList("Arslan", "Aslan", "Alan", "Ivan"));
+    String nameToRemove = "Ivan";
+
+    List<String> expectedList = Arrays.asList("Arslan", "Aslan", "Alan");
+
+    List<String> actualList = BasicJava.removeSpecificName(inputList, nameToRemove);
+
+
+        assertEquals(expectedList, actualList,
+                "Списки не совпадают. Ожидалось удалить всех 'Ivan'.");
+}
+
+
+    @Test
+    public void testCheckAccess1() {
+        int age = 25;
+
+        String actualResult = BasicJava.checkAccess(age);
+
+        boolean wrongExpectedResult = false;
+
+
+        assertEquals(wrongExpectedResult, actualResult,
+                "Тест падает намеренно");
+    }
+
+
+    @Test
+    public void testIsPositive2() {
+        int number = 12;
+
+        boolean actualResult = BasicJava.isPositive(number);
+
+        boolean wrongExpectedResult = false;
+
+        assertEquals(wrongExpectedResult, actualResult,
+                "Тест падает намеренно");
+    }
+
+}
+
 

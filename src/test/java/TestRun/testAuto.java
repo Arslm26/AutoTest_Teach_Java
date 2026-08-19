@@ -16,7 +16,6 @@ import java.util.Random;
 import java.util.stream.Stream;
 
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class testAuto {
@@ -42,7 +41,7 @@ public class testAuto {
     // Запуск одного раза со случайным числом от 1 до 100
     @Test
     public void testIsEven() {
-        int n = random.nextInt(100) + 1; // от 1 до 100 включительно
+        int n = random.nextInt(100) + 1;
         boolean result = basicJava.isEven(n);
         assertEquals(n % 2 == 0, result);
     }
@@ -50,18 +49,26 @@ public class testAuto {
     // Запуск 20 раз со случайными числами от 0 до 99
     @RepeatedTest(20)
     public void testCheckAccess() {
-        int age = random.nextInt(100); // от 0 до 99 включительно
-        String result = basicJava.checkAccess(age);
-        assertNotNull(result);
+        int age = random.nextInt(100);
+        String result = BasicJava.checkAccess(age);
+        String expected = (age >= 18) ? "Доступ разрешен" : "Доступ запрещен";
+        assertEquals(expected, result);
     }
 
-    //Параметризованный тест с массивом (потоком) случайных чисел от 0 до 100
+    //Параметризованный тест с массивом случайных чисел от 0 до 100
     @ParameterizedTest
     @MethodSource("generateRandomScores")
     public void testGetGrade(int score) {
         String result = basicJava.getGrade(score);
-        assertNotNull(result);
+        String expected;
+        if (score >= 90) expected = "A";
+        else if (score >= 80) expected = "B";
+        else if (score >= 70) expected = "C";
+        else if (score >= 60) expected = "D";
+        else expected = "F";
+        assertEquals(expected, result);
     }
+
     //Вспомогательный метод для @ParameterizedTest
     static Stream<Integer> generateRandomScores() {
         Random rand = new Random();
@@ -173,8 +180,8 @@ public class testAuto {
 
 //===============================Task 3 (Assertions sub-task1)
     @Test
-    public void testIsEven_ReturnsBoolean() {
-        int number = 4; // Четное число
+    public void testIsEven1() {
+        int number = 4;
         boolean expectedResult = true;
 
         boolean actualResult = BasicJava.isEven(number);
@@ -184,7 +191,7 @@ public class testAuto {
 }
 
     @Test
-    public void testRemoveSpecificName_ReturnsList() {
+    public void testRemoveSpecificName1() {
     List<String> inputList = new ArrayList<>(Arrays.asList("Arslan", "Aslan", "Alan", "Ivan"));
     String nameToRemove = "Ivan";
 

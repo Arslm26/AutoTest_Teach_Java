@@ -18,7 +18,8 @@ public class BasicJava {
             }
         }
 
-        public String getGrade(int score) {
+
+    public String getGrade(int score) {
             if (score >= 90) return "A";
             if (score >= 80) return "B";
             if (score >= 70) return "C";
@@ -34,10 +35,9 @@ public class BasicJava {
         public static String blastOff(int start) {
             String result = "";
             for (int i = start; i > 0; i--) {
-                System.out.println(i);
+                result = result + i + " ";
 
             }
-            ;
             return result + "Поехали!";
         }
 
@@ -105,5 +105,18 @@ public class BasicJava {
         return result;
     }
 
+
+    public static double calcAverage(List<Integer> list) {
+        if (list == null || list.isEmpty()) {
+            return 0.0;
+        }
+
+        int sum = 0;
+        for (int num : list) {
+            sum += num;
+        }
+
+        return (double) sum / list.size();
+    }
 
 }

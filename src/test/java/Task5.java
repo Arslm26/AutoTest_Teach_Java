@@ -8,7 +8,7 @@ public class Task5 {
             System.out.println(i);
 
         };
-        return result + "Поехали!";
+        return result + "Поехали !";
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {

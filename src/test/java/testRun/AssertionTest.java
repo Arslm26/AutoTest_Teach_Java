@@ -1,4 +1,5 @@
-package TestRun;
+package testRun;
+
 
 
 import org.junit.jupiter.api.AfterEach;
